@@ -16,10 +16,10 @@ import lombok.Setter;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "BIGINT")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name ="nombre",columnDefinition = "VARACHAR(45)")
+    @Column(name ="nombre",columnDefinition = "VARCHAR(45)")
     private String nombre;
 
     @Column(name= "descripción",columnDefinition = "VARCHAR(225)")
