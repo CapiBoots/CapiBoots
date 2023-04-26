@@ -41,15 +41,15 @@
     </thead>
     <tbody>
     <tr th:each="pendiente : ${pendientes}">
-      <td th:text="${pendiente.getfecha_inicio}">Id</td>
-      <td th:text="${pendiente.getFecha_fin}"></td>
-      <td th:text="${pendiente.getidContenido}"></td>
+      <td th:text="${pendiente.getFecha_inicio()}">Id</td>
+      <td th:text="${pendiente.getFecha_fin()}"></td>
+      <td th:text="${pendiente.getIdContenido().getId()}"></td>
 
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
 
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Quitar de la lista</a>
+        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/acceso/borrar/{id}(id=${pendiente.getFecha_inicio()})}">Quitar de la lista</a>
       </td>
 
     </tr>

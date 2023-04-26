@@ -1,7 +1,6 @@
 package com.example.CapiBoots.servicios;
 
 import com.example.CapiBoots.modelos.Accesos;
-import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.repositorios.AccesosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +10,7 @@ import java.util.List;
 public class AccesosSrvcImpls implements ifxAccesosSrvc{
     @Autowired
     public AccesosRepositorio accessrepo;
+
     @Override
     public Accesos buscaId(Long id) {
         return accessrepo.findById(id).orElse(null);
@@ -21,7 +21,7 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
     }
 
     @Override
-    public List<Contenidos> buscaPendientes(Long usu) {
-        return accessrepo.buscarPendientes(usu);
+    public List<Accesos> buscaPendientes(Long usu) {
+        return accessrepo.buscarAccesosPendientes(usu);
     }
 }

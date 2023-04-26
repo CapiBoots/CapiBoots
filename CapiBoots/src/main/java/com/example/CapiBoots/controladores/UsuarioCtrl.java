@@ -1,6 +1,6 @@
 package com.example.CapiBoots.controladores;
 
-import com.example.CapiBoots.modelos.Contenidos;
+import com.example.CapiBoots.modelos.Accesos;
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
@@ -25,7 +25,7 @@ public class UsuarioCtrl {
 
     @GetMapping({"","/"})
     public String inicio(Model modelo) {
-        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
+        List<Accesos> pdtes = accessSrvc.buscaPendientes(2L);
         modelo.addAttribute("pendientes", pdtes);
         modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
         return "/inicio";
@@ -45,7 +45,7 @@ public class UsuarioCtrl {
 
         return"/administrarUsuario/exitoLogin";    }
 
-    @GetMapping("/usuario-id")
+    @GetMapping("/usuario-id/{id}")
     public String UsuPorId(@PathVariable Long id, Model modelo){
         modelo.addAttribute("idusu", usuSrvc.buscaId(id));
         return "usuario";   //Buscar en búsqueda con el filtro de "Usuarios"
