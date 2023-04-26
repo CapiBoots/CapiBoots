@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Accesos{
 
     @Id
-    @Column(name = "fecha_inicio", nullable = false, columnDefinition = "DATETIME default 'NOW()' ")
+    @Column(name = "fecha_inicio", nullable = false, columnDefinition = "DATETIME default NOW()")
     @Convert(converter = TimeConverter.class)
     protected LocalDateTime fecha_inicio;
 
@@ -34,5 +34,6 @@ public class Accesos{
     @Column(name = "fecha_fin", columnDefinition = "DATETIME")
     private LocalDateTime fecha_fin;
 
+    @Column(columnDefinition = "Boolean default false")
     private Boolean terminado=false;
 }

@@ -28,7 +28,7 @@ public class Contenidos {
     @ManyToOne
     @JoinColumn(name="idtemporada", nullable = true)
     private Temporada idtemporada;
-    @Column(name="FechaAlta")
+    @Column(name="FechaAlta", columnDefinition = "DATETIME default NOW()")
     private Date fechaAlta;
 
     @ManyToMany // Many to Many entre Contenidos y Categorias
