@@ -50,11 +50,11 @@
       <td th:text="${usuario.genero}"></td>
       <td th:switch="${usuario.genero}">
 
-        <p th.case="0"> Hombre</p>
-        <p th.case="1"> Mujer</p>
-        <p th.case="2"> Otro</p>
-        <p th.case="3"> NA</p>
-        <p th.case="'*'"> NA*</p>
+        <p th:case="0"> Hombre</p>
+        <p th:case="1"> Mujer</p>
+        <p th:case="2"> Otro</p>
+        <p th:case="3"> NA</p>
+        <p th:case="'*'"> NA*</p>
 
       </td>
       <td th:text="${usuario.correo}">Correo</td>
