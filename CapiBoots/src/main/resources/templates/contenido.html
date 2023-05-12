@@ -51,7 +51,11 @@
     <video id="mireproductor" height="500" controls>
         <input id="vol-control" type="range" min="0" max="100" step="1" oninput="thisVolume(this.value)" onchange="thisVolume(this.value)">
         <div id="vol"></div>
-        <source src="/videos/prueba1.mp4" type="video/mp4">
+        <!-- La URL es relativa al contexto de la aplicación -->
+        <source th:src="@{/videos/{video}(video=${contenido.nombre})}"  type="video/mp4">
+        <!-- Si utilizamos una URL relativa al servidor sería...
+       <source th:src="@{~/videos/nombre_video.mp4}">
+       -->
         Your browser does not support the video tag.
     </video>
 
