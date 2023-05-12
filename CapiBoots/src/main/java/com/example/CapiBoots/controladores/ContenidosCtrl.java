@@ -115,7 +115,6 @@ public class ContenidosCtrl {
 
     }
 
-
     //---------------------------------
 
     @Controller
@@ -199,36 +198,5 @@ public class ContenidosCtrl {
         return "reproductor";
     }
 
-    @GetMapping("/empieza/{id}")
-    public void empezar(@PathVariable Long usuid, @PathVariable Long contid){
-        Accesos acceso = accesoSrvc.buscaIdUsuAndIdCont(usuid, contid);
-
-        if (acceso != null){
-            acceso.setFecha_inicio(LocalDateTime.now());
-            Accesos acc = new Accesos();
-            accesoSrvc.guardar(acc);
-        }
-        // buscamos los contenidos accedidos por el usuario. Este dato debe devolverlo el servicio de contenidos o el de accesos
-
-
-            // Si existe un acceso, significa que el contenido ya lo empezó a ver el usuario. Entonces...
-
-            //      Si hay fecha de fin, el contenido se terminó y significa que empieza a verlo de nuevo
-            //          -> borramos la fecha de fin
-            //          -> ponemso a fecha de incio a now()
-            //      Si NO hay fecha de fin, aún no ha terminado de verlo y podemos o bien poner la fecha de inicio a now(), o bien no tocarla y return
-            //
-            // Si NO existe acceso, creamos un nuevo registro con la fecha de inicio a now() y la fecha de fin a nulo
-
-            // return
-
-            //List<Contenidos> contenidosAccedidos =
-            //System.out.println("empieza el id: " + id);
-        }
-
-        @GetMapping("/termina/{id}")
-        public void terminar(@PathVariable Long id) {
-            System.out.println("termina el id: " + id);
-        }
     }
 }

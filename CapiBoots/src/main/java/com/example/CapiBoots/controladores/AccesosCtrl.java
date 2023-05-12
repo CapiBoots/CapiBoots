@@ -50,7 +50,7 @@ public class AccesosCtrl {
        return "/listas/lista-pendientes";
     }
 
-    @GetMapping("/empezar/{id]")
+    @GetMapping("/empezar/{id}")
     @ResponseStatus(value = HttpStatus.OK)  // indica que la respuesta tendrá un status OK y no hay que devolver nada
     public void empezar(@PathVariable Long id, Principal principal, Model modelo){
         String usuID = principal.getName();
