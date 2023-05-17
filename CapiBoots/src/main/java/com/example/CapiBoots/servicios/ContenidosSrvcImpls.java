@@ -137,4 +137,8 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     public Boolean contTerminado(boolean b) {
         return b;
     }
+
+    public List<Contenidos> buscarPorTipo(String tipo){
+        return contenidoRepo.buscaPorTipo(tipo);
+    }
 }

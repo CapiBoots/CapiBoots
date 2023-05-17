@@ -7,8 +7,8 @@ import com.example.CapiBoots.repositorios.AccesosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AccesosSrvcImpls implements ifxAccesosSrvc{
@@ -41,6 +41,18 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
     @Override
     public List<Contenidos> buscaPendientes(Long usu) {
         return accessrepo.buscarPendientes(usu);
+    }
+
+    public List<Contenidos> pelisPendientes(Long usu) {
+        List<Contenidos> pdtes = this.buscaPendientes(usu);
+        List<Contenidos> pelispdtes = pdtes.stream().filter(cont -> cont.getTipo().equals("Película")).collect(Collectors.toList());
+        return pelispdtes;
+    }
+    public List<Contenidos> librosPendientes(Long usu) {
+        return this.buscaPendientes(usu).stream().filter(cont -> cont.getTipo().equals("libro")).collect(Collectors.toList());
+    }
+    public List<Contenidos> capitulosPendientes(Long usu) {
+        return this.buscaPendientes(usu).stream().filter(cont -> cont.getTipo().equals("Capítulo")).collect(Collectors.toList());
     }
 
 }

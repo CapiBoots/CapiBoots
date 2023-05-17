@@ -21,7 +21,6 @@ public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
     @Query("SELECT c FROM Contenidos c JOIN c.categorias cat WHERE cat.nombre LIKE %?1%")
     List<Contenidos> buscarPorCat(String keyword);
 
-
     //Novedades
     // Seleccionamos todos los contenidos que tienen la propiedad "novedad" a true y tiene más de 7 días
     @Query("UPDATE Contenidos c SET c.novedad = false WHERE c.novedad AND c.fechaAlta < CURRENT_DATE - 7")
@@ -32,4 +31,9 @@ public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
     public List<Contenidos> buscarCap(Long idtempo);
 
     List<Contenidos> findByIdtemporada(Temporada idtemporada);
+
+    @Query("SELECT c FROM Contenidos c WHERE c.tipo = ?1")
+    List<Contenidos> buscaPorTipo(String tipo);
+
+
 }

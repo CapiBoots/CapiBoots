@@ -4,8 +4,10 @@ import com.example.CapiBoots.modelos.*;
 import com.example.CapiBoots.repositorios.ContenidosRepositorio;
 import com.example.CapiBoots.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.SpringCglibInfo;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,25 +69,27 @@ public class ContenidosCtrl {
     }
 
     @GetMapping("/showbox")
-    public String Showbox(Model modelo) {
+    public String Showbox(Principal principal, Model modelo) {
+        modelo.addAttribute("capitulospdtes", accessSrvc.capitulosPendientes(usuSrvc.buscaPorNombre(principal.getName()).getId()));
         modelo.addAttribute("titulo", "Showbox");
         return "Showbox";
     }
 
     @GetMapping("/bookbox")
-    public String bookbox(Model modelo) {
-
+    public String bookbox(Principal principal, Model modelo) {
+        modelo.addAttribute("librospdtes", accessSrvc.librosPendientes(usuSrvc.buscaPorNombre(principal.getName()).getId()));
         modelo.addAttribute("titulo", "BookBox");
         return "bookbox";
     }
 
     @GetMapping("/moviebox")
     public String showbox(Principal principal, Model modelo) {
+
         String usuID = principal.getName();
         Usuario user =  usuSrvc.buscaPorNombre(usuID);
         Long id = user.getId();
         modelo.addAttribute("novedades",accessSrvc.buscaPendientes(id));
-        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
+        modelo.addAttribute("pelispdtes", accessSrvc.pelisPendientes(usuSrvc.buscaPorNombre(principal.getName()).getId()));
         modelo.addAttribute("titulo", "Moviebox");
         return "moviebox";
     }
@@ -212,18 +216,37 @@ public class ContenidosCtrl {
     }
 
     @GetMapping("/reproducir/{id}")
-    public String reproducir(@PathVariable Long id, Model modelo) throws IOException {
-        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+    public String reproducir(@PathVariable Long id, Model modelo, Principal principal) throws IOException {
+        contenidosSrvc.buscarContenidoId(id).ifPresentOrElse(
+                cont -> {
+                    modelo.addAttribute("cont", cont);
+                    modelo.addAttribute("contenido", id);
+                    String usuID = principal.getName();
+                    Usuario usu = usuSrvc.buscaPorNombre(usuID);
 
-        if (cont.isPresent()){
-            Contenidos cont1 = cont.get();
+                    // buscar el último acceso del usuario al contenido
+                    Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
 
-            modelo.addAttribute("cont", cont1);
-        }
-
-        String  mime =  Files.probeContentType(new File(cont.get().getRutaVideo()).toPath());
-        modelo.addAttribute("mime", mime);
-        modelo.addAttribute("contenido", id);
+                    // Si no hay ninguno, es la primera vez que el usuario empieza el contenido y hay que marcarlo. Para ello,
+                    // añadimos un nuevo registro a la tabla de accesos
+                    ultAccesoOpt.ifPresentOrElse(
+                            acc -> {        // Ya existe un acceso previo de ese usuario a ese contenido. Se inicializa el reg.
+                                if(acc.getTerminado()) {
+                                    acc.setTerminado(Boolean.FALSE);
+                                    acc.setFecha_fin(null);
+                                    acc.setFecha_inicio(LocalDateTime.now());
+                                    accessSrvc.guardar(acc);
+                                }
+                            },
+                            () -> {         // No existe acceso previo. Se crea un nuevo registro.
+                                Accesos nuevoAcceso = new Accesos();
+                                nuevoAcceso.setUsuario(usu);
+                                accessSrvc.guardar(nuevoAcceso);
+                            }
+                    );
+                },
+                () -> modelo.addAttribute("error"," No se encuentra el contenido indicado: " + id)
+        );
         return "vistaReproductorPeliculas";
     }
 

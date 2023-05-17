@@ -60,7 +60,6 @@ public class Contenidos {
     @OneToMany(mappedBy = "contenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Accesos> accesos;
 
-
-
+    private String tipo; // puede ser Libro, Película, Capítulo
 
 }

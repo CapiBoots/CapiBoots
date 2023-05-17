@@ -20,13 +20,10 @@
     <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
         <!-- Navigation-->
 
-
         <!-- Header-->
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
-
-
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
@@ -77,200 +74,80 @@
                                     <span style="font-size: 52px;">O</span>
                                     <span style="font-size: 52px;">X</span>
                                 </h1>
-
-
                                 <br>
-
-                                </div>
-                                <h2  style="font-family: 'Calibri Light', sans-serif;">Novedades:</h2>
-                                <h3 style="font-family: 'Calibri Light', sans-serif;">Califica tus peliculas y compartelas con tus amigos.</h3>
+                            </div>
+                            <h2  style="font-family: 'Calibri Light', sans-serif;">Novedades:</h2>
+                            <h3 style="font-family: 'Calibri Light', sans-serif;">Califica tus peliculas y compartelas con tus amigos.</h3>
                                <!-- <a class="btn btn-primary mb-3 grow" href="#">Categorías</a>-->
-
-                                <div>
+                            <div>
                                     <button type="button" class="btn btn-primary mb-1 grow" data-bs-toggle="modal" data-bs-target="#mimodal1">
                                         Categorías
                                     </button>
                                 </div>
 
-                                <a class="btn btn-primary mt-1 grow" href="#">Todas las novedades</a>
-                            </div>
-
+                            <a class="btn btn-primary mt-1 grow" href="#">Todas las novedades</a>
                         </div>
+
                     </div>
                 </div>
-
-
-
             </div>
-            <div class="bg-circle-1 bg-circle"></div>
-            <div class="bg-circle-2 bg-circle"></div>
-            <div class="bg-circle-3 bg-circle"></div>
-            <div class="bg-circle-4 bg-circle"></div>
+
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
         <br>
-        </header>
+    </header>
     <div th:replace="bloques/bloques.html :: categorias" > </div>
         <!-- Content section 1-->
         <!-- Sección de Seguir Viendo-->
-        <section class="py-5">
-            <div class="container-fluid px-5 my-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6">
-                        <div class="text-center">
-                            <h2 class="fw-bolder" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 42px; color: #e50914;">Seguir viendo</h2>
-                            <p class="lead fw-normal text-muted mb-5" style="font-size: 28px;">Continua los libros que estabas leyendo</p>
-                        </div>
+    <section class="py-5">
+        <div class="container-fluid px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="text-center">
+                        <h2 class="fw-bolder"
+                            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 42px; color: #e50914;">
+                            Seguir viendo</h2>
+                        <p class="lead fw-normal text-muted mb-5" style="font-size: 28px;">Continua los libros que
+                            estabas leyendo</p>
                     </div>
-                </div>
-                <div id="micarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="30000">
-                    <div class="carousel-inner">
-                        <!--1ª sección-->
-                        <div class="carousel-item active">
-                            <div class="row col-11 mx-auto gx-3">
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-
-                                        <img src="/template_menus/assets/libros/aliciapais.jpg" class="img-fluid" height="200"
-                                             width="700" alt="Alicia"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 1</h5></a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/DonQuijote.jpg" class="img-fluid" height="350"
-                                             width="600" alt="DonQuijote"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 2</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/ElCodigoDaVinci.jpg" class="img-fluid" height="350"
-                                             width="600" alt="DaVinci"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 3</h5></a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/ElNombreDelViento.jpg" class="img-fluid" height="350"
-                                             width="600" alt="ElNombreDelViento"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 4</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/elprincipito.jpg" class="img-fluid" height="350"
-                                             width="600" alt="ElPrincipito"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 5</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/elsenyordelosanillos.jpg" class="img-fluid" height="350"
-                                             width="600" alt="ESDLA"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 6</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--2ª sección-->
-                        <div class="carousel-item active">
-                            <div class="row col-11 mx-auto gx-3">
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/guardiancenteno.jpg" class="img-fluid" height="350"
-                                             width="600" alt="GuardianCenteno"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 7</h5></a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/HPFilosofal.jpg" class="img-fluid" height="350"
-                                             width="600" alt="HP"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 8</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/IT.jpg" class="img-fluid" height="350" width="600" alt="IT"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 9</h5></a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/JuegosDelHambre.jpg" class="img-fluid" height="350"
-                                             width="600" alt="JDH"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 10</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/narnia.jpg" class="img-fluid" height="350" width="600" alt="Narnia"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 11</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 mb-5">
-                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                        <img src="/template_menus/assets/libros/PilaresDeLaTierra.jpg" class="img-fluid" height="350"
-                                             width="600" alt="PilaresTierra"/>
-                                        <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 12</h5></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Controles-->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#micarousel2" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark py-5 me-auto" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-
-                    <button class="carousel-control-next" type="button" data-bs-target="#micarousel2" data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-dark py-5 ms-auto" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
                 </div>
             </div>
-        </section>
-        </main>
+
+            <div id="micarousel3" class="carousel slide" data-bs-ride="carousel" data-bs-interval="30000">
+                <div class="carousel-inner">
+                    <!--1ª sección-->
+                    <div class="carousel-item active">
+                        <div class="row col-11 mx-auto gx-3">
+                            <div class="col-lg-2 mb-5 card shadow border-0 m-1 p-0" th:each="pendiente : ${pelispdtes}"
+                                 style="background-color:#f72a2a; width: 241px; height: 400px">
+                                <img th:src="${pendiente.imagenLogo}" class="img-fluid p-0"/>
+                                <div class="card-body p-4 mx-auto">
+                                    <a th:text="${pendiente.nombre}"
+                                       class="text-decoration-none text-light link-dark stretched-link"
+                                       th:href="@{/contenido/{id}(id=${pendiente.id})}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Controles-->
+                <button class="carousel-control-prev" type="button" data-bs-target="#micarousel3" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark py-5 me-auto" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#micarousel3" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark py-5 ms-auto" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
         <!-- Footer-->
     <footer class="py-5 bg-black">
         <div class="container px-5">
@@ -287,13 +164,11 @@
                 </a>
             </div>
 
-            </a>
-        </div>
         </div>
     </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/template_menus/js/scripts.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/template_menus/js/scripts.js"></script>
     </body>
 </html>
