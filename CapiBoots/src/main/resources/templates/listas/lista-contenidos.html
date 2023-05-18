@@ -13,7 +13,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/template_menus/css/styles.css" rel="stylesheet" />
 
   <title>Lista de Contenidos</title>
 </head>
@@ -27,13 +27,16 @@
 </main>
 </header>
 <!--Lista de Contenidos-->
-<div>
+<div style="margin-left: 50px;">
+  <br>
   <a class="navbar-brand" th:href="@{/contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
-    <span>Lista de Contenidos</span>
+    <h2 class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Lista de Contenidos </h2>
   </a>
   <br>
   <!--Crear-->
-  <a th:href="@{/contenido/nuevo-contenido}">Crear</a>
+  <a th:href="@{/contenido/nuevo-contenido}" class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00; font-size: 30px;">Crear</a>
+
+
 
     <!--Listar-->
   <br><br><br>
@@ -54,11 +57,10 @@
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
-        <a class="btn btn-primary" th:href="@{/contenido/editar/{id}(id=${contenido.id})}" >Editar</a>
+        <a class="btn btn-primary"  style="margin-left: 250px;" th:href="@{/contenido/editar/{id}(id=${contenido.id})}" >Editar</a>
         <!---Subir Archivo-->
-        <a class="btn btn-success" th:href="@{/contenido/nuevo-contenido/subir-archivo/{id}(id=${contenido.id})}" >Subir Archivo</a>
-        <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')"
-           class="btn btn-outline-danger" th:href="@{/contenido/borrar/{id}(id=${contenido.id})}">Borrar</a>
+        <a class="btn btn-primary" th:href="@{/contenido/nuevo-contenido/subir-archivo/{id}(id=${contenido.id})}" >Subir Archivo</a>
+        <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')" class="btn btn-primary" th:href="@{/contenido/borrar/{id}(id=${contenido.id})}">Borrar</a>
       </td>
 
     </tr>
@@ -66,14 +68,16 @@
   </table>
 </div>
 <!--Lista de Series-->
-<div>
+<div style="margin-left: 50px;">
   <div>
     <div>
+      <br>
+      <div style="margin-left: 10px;">
       <a class="navbar-brand" th:href="@{//contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
-        <span>Lista de Series</span>
+        <h2 class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Lista de Series</h2>
       </a>
       <br>
-      <a th:href="@{/serie/nueva-serie}">Crear nueva serie</a>
+      <a th:href="@{/serie/nueva-serie}"  class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00; font-size: 30px;">Crear nueva serie</a>
     </div>
 
     <br>
@@ -110,9 +114,9 @@
             <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
             <a class="btn btn-primary" th:href="@{/serie/editar/{id}(id=${serie.id})}" >Editar</a>
             <!---Subir Archivo-->
-            <a class="btn btn-success" th:href="@{/serie/nueva-serie/subir-archivo/{id}(id=${serie.id})}" >Subir Archivo</a>
+            <a class="btn btn-primary" th:href="@{/serie/nueva-serie/subir-archivo/{id}(id=${serie.id})}" >Subir Archivo</a>
             <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')"
-               class="btn btn-outline-danger" th:href="@{/serie/borrar/{id}(id=${serie.id})}">Borrar</a>
+               class="btn btn-primary" th:href="@{/serie/borrar/{id}(id=${serie.id})}">Borrar</a>
           </td>
 
         </tr>
@@ -122,8 +126,8 @@
 
   </div>
 </div>
-
-
+<br>
+<br>
 
 <!-- Optional JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
