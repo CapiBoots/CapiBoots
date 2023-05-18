@@ -44,6 +44,9 @@ public class ContenidosCtrl {
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
 
+    @Autowired
+    private CategoriasSrvcImpls catSrvc;
+
     @GetMapping("/guardarContenido")
     public String guardarContenido(Model modelo) {
         modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
@@ -175,6 +178,8 @@ public class ContenidosCtrl {
 
         //Usamos un cont con novedades activo para crear contenido
         modelo.addAttribute("contenido", cont);
+        List<Categorias> listacat = catSrvc.listaCat();
+        modelo.addAttribute("categorias", listacat);
         return "/forms/nuevo-contenido";
     }
 
@@ -196,6 +201,8 @@ public class ContenidosCtrl {
         Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
         if (contOptional.isPresent()) {
             modelo.addAttribute("contenido", contOptional.get());
+            List<Categorias> listacat = catSrvc.listaCat();
+            modelo.addAttribute("categorias", listacat);
         } else {
             return "error";
         }
@@ -220,6 +227,13 @@ public class ContenidosCtrl {
         contenidosSrvc.buscarContenidoId(id).ifPresentOrElse(
                 cont -> {
                     modelo.addAttribute("cont", cont);
+                    String  mime = null;
+                    try {
+                        mime = Files.probeContentType(new File(cont.getRutaVideo()).toPath());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    modelo.addAttribute("mime", mime);
                     modelo.addAttribute("contenido", id);
                     String usuID = principal.getName();
                     Usuario usu = usuSrvc.buscaPorNombre(usuID);
@@ -229,21 +243,23 @@ public class ContenidosCtrl {
 
                     // Si no hay ninguno, es la primera vez que el usuario empieza el contenido y hay que marcarlo. Para ello,
                     // añadimos un nuevo registro a la tabla de accesos
-                    ultAccesoOpt.ifPresentOrElse(
-                            acc -> {        // Ya existe un acceso previo de ese usuario a ese contenido. Se inicializa el reg.
-                                if(acc.getTerminado()) {
-                                    acc.setTerminado(Boolean.FALSE);
-                                    acc.setFecha_fin(null);
-                                    acc.setFecha_inicio(LocalDateTime.now());
-                                    accessSrvc.guardar(acc);
-                                }
-                            },
-                            () -> {         // No existe acceso previo. Se crea un nuevo registro.
-                                Accesos nuevoAcceso = new Accesos();
-                                nuevoAcceso.setUsuario(usu);
-                                accessSrvc.guardar(nuevoAcceso);
-                            }
-                    );
+                    if (ultAccesoOpt.isPresent()){
+                        // Ya existe un acceso previo de ese usuario a ese contenido. Se inicializa el reg.
+                        Accesos acc = ultAccesoOpt.get();
+                        if(acc.getTerminado()) {
+                            acc.setTerminado(Boolean.FALSE);
+                            acc.setFecha_fin(null);
+                            acc.setFecha_inicio(LocalDateTime.now());
+                            accessSrvc.guardar(acc);
+                        }
+                    } else {
+                        // No existe acceso previo. Se crea un nuevo registro.
+                        Accesos nuevoAcceso = new Accesos();
+                        nuevoAcceso.setUsuario(usu);
+                        nuevoAcceso.setContenido(cont);
+                        nuevoAcceso.setFecha_inicio(LocalDateTime.now());
+                        accessSrvc.guardar(nuevoAcceso);
+                    }
                 },
                 () -> modelo.addAttribute("error"," No se encuentra el contenido indicado: " + id)
         );

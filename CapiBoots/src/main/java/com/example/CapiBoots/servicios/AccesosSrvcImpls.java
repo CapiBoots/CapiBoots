@@ -27,10 +27,13 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
     // Devuelve el último acceso de un usuario a un contenido
     public Optional<Accesos> buscaUltimoAcceso(Long usu, Long cont){
         // obtenemos la lista de todos los accesos del usuario al contenido indicado
-        List<Accesos> lista = accessrepo.buscarAccesos(usu, cont);
-        // Obtenemos el último de la lista como Optional, ya que puede no existir (y ser nulo)
-        Optional<Accesos> ult = Optional.ofNullable(lista.get(lista.size()-1));
-        return ult;
+        if(accessrepo.buscarAccesos(usu, cont).isPresent()) {
+            List<Accesos> lista = accessrepo.buscarAccesos(usu, cont).get();
+            if (lista.size() > 0) {
+                return Optional.of(lista.get(lista.size()-1));
+            };
+        }
+        return Optional.ofNullable(null);
     }
 
     @Override
@@ -45,7 +48,7 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
 
     public List<Contenidos> pelisPendientes(Long usu) {
         List<Contenidos> pdtes = this.buscaPendientes(usu);
-        List<Contenidos> pelispdtes = pdtes.stream().filter(cont -> cont.getTipo().equals("Película")).collect(Collectors.toList());
+        List<Contenidos> pelispdtes = pdtes.stream().filter(cont -> cont.getTipo().equals("Pelicula")).collect(Collectors.toList());
         return pelispdtes;
     }
     public List<Contenidos> librosPendientes(Long usu) {

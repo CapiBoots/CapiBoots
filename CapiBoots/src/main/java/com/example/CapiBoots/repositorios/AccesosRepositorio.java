@@ -15,7 +15,7 @@ public interface AccesosRepositorio extends JpaRepository<Accesos, Long> {
     @Query("SELECT a.contenido FROM Accesos a WHERE a.usuario.id=?1 AND a.terminado IS NULL")  //TODO Conseguir para series, libros y no cap?
     List<Contenidos> buscarPendientes(Long usu);
 
-    @Query("SELECT a.contenido FROM Accesos a WHERE a.usuario.id=?1 AND a.contenido.id=?2 ORDER BY a.id")
-    List<Accesos> buscarAccesos(Long usu, Long contenido);
+    @Query("SELECT a FROM Accesos a WHERE a.usuario.id=?1 AND a.contenido.id=?2 ORDER BY a.id")
+    Optional<List<Accesos>> buscarAccesos(Long usu, Long contenido);
 
 }

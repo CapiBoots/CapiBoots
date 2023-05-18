@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -30,9 +31,9 @@ public class Contenidos {
     @ManyToOne
     @JoinColumn(name="idtemporada", nullable = true)
     private Temporada idtemporada;
-    @Column(name="FechaAlta", columnDefinition = "DEFAULT CURRENT_DATE()")
-    private Date fechaAlta;
-    @Column(columnDefinition = "default 1")
+    @Column(name="FechaAlta", columnDefinition = "DATETIME")
+    private LocalDateTime fechaAlta;
+
     private Boolean novedad = true;
 
     @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")

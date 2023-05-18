@@ -21,7 +21,7 @@ public class Accesos{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "fecha_inicio", columnDefinition = "DEFAULT CURRENT_DATE()")
+    @Column(name = "fecha_inicio", columnDefinition = "DATETIME")
     @Convert(converter = TimeConverter.class)
     protected LocalDateTime fecha_inicio;
 
@@ -37,6 +37,5 @@ public class Accesos{
     @Column(name = "fecha_fin", columnDefinition = "DATETIME")
     private LocalDateTime fecha_fin;
 
-    @Column(columnDefinition = "boolean default false")
-    private Boolean terminado;
+    private Boolean terminado=false;
 }
