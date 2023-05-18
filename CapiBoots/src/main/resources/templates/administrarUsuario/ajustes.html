@@ -81,15 +81,17 @@
                                 <div class="col-9">&nbsp;</div>
                                 <div class="col-3">
                                     <br>
-                                    <a class="btn btn-primary  grow" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
+<!--                                    <a class="btn btn-primary  grow" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>-->
 
                                 </div>
                             </div>
                         </div>
 
                     <br>
-                    <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}"><button>Lista de Contenidos</button></a>
-                    <a th:href="@{/lista-usuarios}" th:hidden="${ad}"><button>Lista de Usuarios</button></a>
+                    <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}"><button class="btn btn-primary">Lista de Contenidos</button></a>
+                    <a th:href="@{/lista-usuarios}" th:hidden="${ad}"><button class="btn btn-primary">Lista de Usuarios</button></a>
+                    <a class="btn btn-primary  grow" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
+
 
                 </div>
             </div>
