@@ -13,7 +13,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/template_menus/css/styles.css" rel="stylesheet" />
 
   <title>Lista de Usuarios</title>
 </head>
@@ -28,14 +28,16 @@
     </main>
   </header>
   <br>
+  <div style="margin-left: 50px;">
+<!--  <a class="navbar-brand" th:href="@{/lista-usuarios}" style="font-size: 38px; color: black; font-weight: bold">Lista de Usuarios</span>-->
 
-  <a class="navbar-brand" th:href="@{/lista-usuarios}" style="font-size: 38px; color: black; font-weight: bold">
-    <span>Lista de Usuarios</span>
+
+    <h2 th:href="@{/lista-usuarios}" class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Lista de Usuarios</h2>
   </a>
   <br>
 
   <!--Crear-->
-  <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
+  <a th:href="@{/usuario/nuevo-usuario}" class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00; font-size: 30px;">Crear nuevo usuario</a>
 
   <!--Lista-->
   <br><br><br>
@@ -70,8 +72,8 @@
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
-        <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
+        <a class="btn btn-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
+        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-primary" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
       </td>
 
     </tr>
